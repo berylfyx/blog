@@ -1,0 +1,26 @@
+[
+    {
+        "id": "datong-reflection",
+        "date": "2025-06-19",
+        "title": {
+            "en": "We built a beloved product but shut it down: A reflection on Datong",
+            "zh": "我们打造了一款深受喜爱的产品，但最终关闭了它：关于“大同”的反思"
+        },
+        "description": {
+            "en": "Reflecting on the journey of building Datong, a startup aimed at democratizing high-quality information.",
+            "zh": "反思打造“大同”的旅程，这是一家旨在普及高质量信息的初创公司。"
+        }
+    },
+    {
+        "id": "remember-legend",
+        "date": "2016",
+        "title": {
+            "en": "Remember You Are a Legend",
+            "zh": "记得自己是个传奇"
+        },
+        "description": {
+            "en": "My existence itself is a legend.",
+            "zh": "我的存在本身就是一个传奇。"
+        }
+    }
+]

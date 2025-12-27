@@ -1,0 +1,456 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    /* Premium Monochrome Palette */
+    --color-bg: #ffffff;
+    --color-surface: #f9f9f9;
+    --color-surface-hover: #f0f0f0;
+    --color-text: #1d1d1f;
+    /* Apple's dark gray */
+    --color-text-secondary: #86868b;
+    --color-border: #d2d2d7;
+    --color-accent: #0071e3;
+    /* Classic Apple Blue */
+
+    /* Typography */
+    /* EN: Inter/SF, CN: PingFang SC/Microsoft YaHei */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Segoe UI', Roboto, sans-serif;
+
+    /* EN: Newsreader, CN: Songti SC for elegant reading */
+    --font-serif: 'Newsreader', 'Songti SC', 'SimSun', 'Georgia', serif;
+
+    /* Spacing & Layout */
+    --max-width: 680px;
+    /* Tighter reading width like specialized blogs */
+    --header-height: 60px;
+    --radius-sm: 8px;
+    --radius-lg: 18px;
+
+    /* Effects */
+    --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #000000;
+        --color-surface: #1c1c1e;
+        --color-surface-hover: #2c2c2e;
+        --color-text: #f5f5f7;
+        --color-text-secondary: #86868b;
+        --color-border: #424245;
+        --color-accent: #2997ff;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Layout */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Header */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--header-height);
+    background: rgba(var(--color-bg), 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s ease;
+}
+
+/* Add a subtle separator on scroll if needed via JS, strictly keeping it clean for now */
+
+.site-header .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    /* Match the rest of the text */
+    font-weight: 600;
+    font-size: 1.125rem;
+    /* Slightly larger for Serif */
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-right: 16px;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-text);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.lang-toggle {
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 4px 10px;
+    color: var(--color-text-secondary);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.lang-toggle:hover {
+    color: var(--color-text);
+    background-color: var(--color-surface-hover);
+    border-color: var(--color-border);
+}
+
+.lang-toggle svg {
+    display: block;
+}
+
+.lang-text {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding-top: 1px;
+    /* Optical alignment */
+}
+
+/* Main Content */
+main {
+    padding: 64px 0 80px;
+}
+
+/* Typography Helpers */
+h1,
+h2,
+h3 {
+    font-family: var(--font-serif);
+    /* Consistent Editorial Look */
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+/* Hero Section */
+.hero {
+    margin-bottom: 40px;
+    animation: fadeIn 0.8s var(--ease-out);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    background: linear-gradient(180deg, var(--color-text) 0%, var(--color-text-secondary) 150%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero p {
+    font-family: var(--font-serif);
+    /* Consistent with body text */
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 90%;
+    line-height: 1.6;
+}
+
+/* Post List */
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.post-card {
+    display: block;
+    group;
+    animation: slideUp 0.8s var(--ease-out) backwards;
+}
+
+.post-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.post-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.post-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.post-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    transition: color 0.2s ease;
+}
+
+.post-card:hover h2 {
+    color: var(--color-accent);
+}
+
+.post-card p {
+    font-family: var(--font-serif);
+    /* Consistent with body text */
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.post-card .meta {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-feature-settings: "tnum";
+    opacity: 0.8;
+}
+
+/* Article View (Markdown) */
+.markdown-body {
+    animation: fadeIn 0.5s ease;
+}
+
+.markdown-body h1 {
+    font-size: 2.5rem;
+    margin-bottom: 32px;
+}
+
+.markdown-body h2 {
+    font-size: 1.75rem;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.markdown-body p {
+    font-family: var(--font-serif);
+    /* Serif for body text like Anthropic/Medium */
+    font-size: 1.125rem;
+    line-height: 1.8;
+    /* Slightly increased for better breathability with mixed content */
+    margin-bottom: 24px;
+    color: var(--color-text);
+    text-align: justify;
+    /* Elegant edges */
+}
+
+.markdown-body ul,
+.markdown-body ol {
+    margin-bottom: 24px;
+    padding-left: 1.5em;
+    /* Cleaner alignment */
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+.markdown-body li {
+    margin-bottom: 8px;
+    padding-left: 0.5em;
+}
+
+.markdown-body li::marker {
+    color: var(--color-text-secondary);
+}
+
+/* Ensure Chinese headers don't feel too bold */
+:lang(zh) h1,
+:lang(zh) h2,
+:lang(zh) h3 {
+    font-weight: 500;
+}
+
+.markdown-body code {
+    font-family: 'SF Mono', SFMono-Regular, ui-monospace, monospace;
+    font-size: 0.9em;
+    background: var(--color-surface);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--color-text);
+}
+
+.markdown-body pre {
+    background: var(--color-surface);
+    padding: 24px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    margin: 32px 0;
+    border: 1px solid var(--color-border);
+}
+
+.markdown-body pre code {
+    background: transparent;
+    padding: 0;
+    color: var(--color-text);
+    font-size: 0.875rem;
+}
+
+.markdown-body blockquote {
+    margin: 32px 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--color-accent);
+    color: var(--color-text-secondary);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.125rem;
+}
+
+/* Footer */
+.site-footer {
+    font-family: var(--font-serif);
+    /* Consistent with the rest of the site */
+    border-top: 1px solid var(--color-border);
+    margin-top: 40px;
+    padding: 40px 0;
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Utilities */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 32px;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    :root {
+        --header-height: 56px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    main {
+        padding: 40px 0 60px;
+    }
+
+    .site-header {
+        background: rgba(var(--color-bg), 0.9);
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+        margin-right: 12px;
+    }
+
+    .lang-toggle {
+        padding: 6px 12px;
+    }
+
+    .lang-text {
+        font-size: 0.8rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.05rem;
+        max-width: 100%;
+    }
+
+    .post-card h2 {
+        font-size: 1.35rem;
+    }
+
+    .markdown-body h1 {
+        font-size: 1.8rem;
+    }
+
+    .markdown-body h2 {
+        font-size: 1.5rem;
+        margin-top: 40px;
+    }
+
+    .markdown-body p,
+    .markdown-body li {
+        font-size: 1.05rem;
+        text-align: left;
+        /* Justify can look gappy on mobile */
+    }
+
+    .markdown-body blockquote {
+        margin: 24px 0;
+        font-size: 1.05rem;
+    }
+}
